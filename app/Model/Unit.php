@@ -101,4 +101,34 @@ class Unit
     {
         return $this->maxHealth;
     }
+
+    /**
+     * Checking if attack successful.
+     *
+     * @return bool
+     */
+    public function isAttackSuccessful(): bool
+    {
+        return $this->accuracy <= rand(1, 100);
+    }
+
+    /**
+     * Reduce health after attacker cause damage.
+     *
+     * @param int $damage
+     */
+    public function reduceHealth(int $damage): void
+    {
+        $this->health -= $damage;
+    }
+
+    /**
+     * Check if unit have health above zero.
+     *
+     * @return bool
+     */
+    public function isFall(): bool
+    {
+        return $this->health <= 0;
+    }
 }

@@ -52,4 +52,18 @@ class UnitSpec extends ObjectBehavior
     {
         $this->getMaxHealth()->shouldReturn(100);
     }
+
+    public function it_can_reduce_health(): void
+    {
+        $this->reduceHealth(5);
+
+        $this->getHealth()->shouldReturn(95);
+    }
+
+    public function it_can_check_if_unit_fall(): void
+    {
+        $this->reduceHealth(105);
+
+        $this->isFall()->shouldReturn(true);
+    }
 }
