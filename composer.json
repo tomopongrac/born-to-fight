@@ -61,6 +61,16 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "fix-cs": {
+            "phpcbf": "vendor/bin/phpcbf"
+        },
+        "analyze-code": {
+            "larastan": "php artisan code:analyse"
+        },
+        "run-tests": {
+            "phpspec": "vendor/bin/phpspec run",
+            "phpunit": "vendor/bin/phpunit"
+        }
     }
 }
