@@ -127,4 +127,14 @@ class Army
             $unit->regenerate();
         }
     }
+
+    /**
+     * Regenerate each unit in army.
+     */
+    public function reduceMorale(): void
+    {
+        foreach ($this->units as $unit) {
+            $unit->reduceMorale();
+        }
+    }
 }

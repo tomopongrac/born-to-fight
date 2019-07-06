@@ -38,6 +38,8 @@ class BattleManagerSpec extends ObjectBehavior
         $unit2->reduceHealth(0)->shouldBeCalled();
 
         $unit2->isFall()->willReturn(true);
+        $unit2->isGeneral()->willReturn(true);
+        $army2->reduceMorale()->shouldBeCalled();
         $unit1->increaseExperience()->shouldBeCalled();
         $army1->isUnitExist($unit2)->willReturn(false);
         $army2->isUnitExist($unit2)->willReturn(true);

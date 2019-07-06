@@ -151,6 +151,22 @@ class BattleManager
     }
 
     /**
+     * Reduce morale army where unit belongs.
+     *
+     * @param  Unit  $unit
+     */
+    private function reduceMoraleForArmy(Unit $unit): void
+    {
+        if ($this->army1->isUnitExist($unit)) {
+            $this->army1->reduceMorale();
+        }
+
+        if ($this->army2->isUnitExist($unit)) {
+            $this->army2->reduceMorale();
+        }
+    }
+
+    /**
      * Return army which win.
      *
      * @return Army
@@ -193,6 +209,9 @@ class BattleManager
     private function isFall(Unit $unit): bool
     {
         if ($unit->isFall()) {
+            if ($unit->isGeneral()) {
+                $this->reduceMoraleForArmy($unit);
+            }
             $this->deleteUnitFromArmy($unit);
             return true;
         }

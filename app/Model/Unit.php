@@ -88,6 +88,16 @@ class Unit
     }
 
     /**
+     * Checking if unit is general.
+     *
+     * @return bool
+     */
+    public function isGeneral(): bool
+    {
+        return $this->type === $this->getGeneralType();
+    }
+
+    /**
      * Return value strength
      *
      * @return int
@@ -188,11 +198,19 @@ class Unit
     /**
      * Reduce health after attacker cause damage.
      *
-     * @param int $damage
+     * @param  int  $damage
      */
     public function reduceHealth(int $damage): void
     {
         $this->health -= $damage;
+    }
+
+    /**
+     * Reduce when general is fall.
+     */
+    public function reduceMorale(): void
+    {
+        $this->morale = (int) floor($this->morale / 2);
     }
 
     /**

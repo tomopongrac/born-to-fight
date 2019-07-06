@@ -71,6 +71,15 @@ class UnitSpec extends ObjectBehavior
         $this->getHealth()->shouldReturn(95);
     }
 
+    public function it_can_reduce_morale_when_general_is_fall(): void
+    {
+        $this->getMorale()->shouldReturn(51);
+
+        $this->reduceMorale();
+
+        $this->getMorale()->shouldReturn(25);
+    }
+
     public function it_can_check_if_unit_fall(): void
     {
         $this->reduceHealth(105);
