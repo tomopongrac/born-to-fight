@@ -32,6 +32,12 @@ Attributes are:
 
 Config files are located in /config/app/units.php and /config/app/general.php
 
+If you want to change where your units are stored (for instance in db) you need to create service which implements interface \App\Service\UnitsLoaderInterface and than bind new service in app/Providers/AppServiceProvider.php on method register. Bellow is how it looks now.
+
+```
+$this->app->bind(UnitsLoaderInterface::class, ConfigUnitsLoader::class);
+```
+
 # Features
 - on each turn there is randomly selected attacker and defender
 - after each turn both armies are regenerated

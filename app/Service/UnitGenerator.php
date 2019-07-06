@@ -9,14 +9,16 @@ use App\Model\Unit;
 class UnitGenerator
 {
     /**
-     * @var UnitsLoader
+     * @var UnitsLoaderInterface
      */
     private $unitsLoader;
 
     /**
      * UnitGenerator constructor.
+     *
+     * @param  UnitsLoaderInterface  $unitsLoader
      */
-    public function __construct(UnitsLoader $unitsLoader)
+    public function __construct(UnitsLoaderInterface $unitsLoader)
     {
         $this->unitsLoader = $unitsLoader;
     }

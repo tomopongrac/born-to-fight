@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\App\Service;
 
 use App\Model\Unit;
+use App\Service\ConfigUnitsLoader;
 use App\Service\UnitGenerator;
 use App\Service\UnitsLoader;
 use PhpSpec\ObjectBehavior;
@@ -16,12 +17,12 @@ class UnitGeneratorSpec extends ObjectBehavior
         $this->shouldHaveType(UnitGenerator::class);
     }
 
-    public function let(UnitsLoader $unitLoader): void
+    public function let(ConfigUnitsLoader $unitLoader): void
     {
         $this->beConstructedWith($unitLoader);
     }
 
-    public function it_can_generate_random_number_of_units(UnitsLoader $unitLoader)
+    public function it_can_generate_random_number_of_units(ConfigUnitsLoader $unitLoader)
     {
         $unitLoader->getUnits()->willReturn([
             [
