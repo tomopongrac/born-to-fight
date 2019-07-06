@@ -32,6 +32,7 @@ class BattleManagerSpec extends ObjectBehavior
         $army2->getUnitForFight()->willReturn($unit2);
 
         $unit1->isAttackSuccessful()->willReturn(true);
+        $unit2->isStartingToRun()->willReturn(false);
         $unit1->getStrength()->shouldBeCalled();
         $unit2->getArmour()->shouldBeCalled();
         $unit2->reduceHealth(0)->shouldBeCalled();
@@ -46,5 +47,14 @@ class BattleManagerSpec extends ObjectBehavior
         $battleResult->shouldBeAnInstanceOf(BattleResult::class);
         $battleResult->getWinningArmy()->shouldReturn($army1);
         $battleResult->getTurn()->shouldReturn(1);
+    }
+
+    public function it_looks_if_unit_starts_to_run_from_attacker_if_so_than_that_unit_is_automatically_slain(Army $army1, Army $army2, Unit $unit1, Unit $unit2)
+    {
+        $unit2->isStartingToRun()->willReturn(true);
+        $unit2->setHealthToZero()->shouldBeCalled();
+        $unit1->isAttackSuccessful()->shouldNotBeCalled();
+
+        $this->attackerAttack($unit1, $unit2);
     }
 }

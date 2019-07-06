@@ -98,6 +98,11 @@ class BattleManager
      */
     public function attackerAttack(Unit $attacker, Unit $defender): void
     {
+        if ($defender->isStartingToRun()) {
+            $defender->setHealthToZero();
+            return;
+        }
+
         if ($attacker->isAttackSuccessful()) {
             $damage = $this->calculateDamage($attacker, $defender);
             $defender->reduceHealth($damage);

@@ -119,6 +119,16 @@ class Unit
     }
 
     /**
+     * Checking if unit starting to run from battle.
+     *
+     * @return bool
+     */
+    public function isStartingToRun(): bool
+    {
+        return $this->morale <= rand(1, 100);
+    }
+
+    /**
      * Checking if attack successful.
      *
      * @return bool
@@ -126,6 +136,16 @@ class Unit
     public function isAttackSuccessful(): bool
     {
         return $this->accuracy <= rand(1, 100);
+    }
+
+    /**
+     * Reduce health to zero.
+     *
+     * @param int $damage
+     */
+    public function setHealthToZero(): void
+    {
+        $this->health = 0;
     }
 
     /**
