@@ -60,17 +60,15 @@ class BattleManager
 
             $this->attackerAttack($attacker, $defender);
 
-            if ($defender->isFall()) {
+            if ($this->isFall($defender)) {
                 $attacker->increaseExperience();
-                $this->deleteUnitFromArmy($defender);
                 continue;
             }
 
             $this->defenderAttack($attacker, $defender);
 
-            if ($attacker->isFall()) {
+            if ($this->isFall($attacker)) {
                 $defender->increaseExperience();
-                $this->deleteUnitFromArmy($attacker);
                 continue;
             }
         }
@@ -184,5 +182,21 @@ class BattleManager
             $this->army1->regenerateUnits();
             $this->army2->regenerateUnits();
         }
+    }
+
+    /**
+     * Checking if unit is defeated.
+     * 
+     * @param  Unit  $unit
+     * @return bool
+     */
+    private function isFall(Unit $unit): bool
+    {
+        if ($unit->isFall()) {
+            $this->deleteUnitFromArmy($unit);
+            return true;
+        }
+
+        return false;
     }
 }
