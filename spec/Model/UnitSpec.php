@@ -72,4 +72,24 @@ class UnitSpec extends ObjectBehavior
 
         $this->isFall()->shouldReturn(true);
     }
+
+    public function it_can_regenerate(): void
+    {
+        $this->setHealth(50);
+        $this->getHealth()->shouldReturn(50);
+
+        $this->regenerate();
+
+        $this->getHealth()->shouldReturn(52);
+    }
+
+    public function it_can_not_regenerate_if_unit_has_max_health()
+    {
+        $this->getHealth()->shouldReturn(100);
+        $this->getMaxHealth()->shouldReturn(100);
+
+        $this->regenerate();
+
+        $this->getHealth()->shouldReturn(100);
+    }
 }

@@ -6,6 +6,7 @@ namespace App\Model;
 
 class Unit
 {
+    private const REGENERATION_POINTS = 2;
     /**
      * @var string
      */
@@ -139,6 +140,16 @@ class Unit
     }
 
     /**
+     * Set health to given value.
+     *
+     * @param  int  $health
+     */
+    public function setHealth(int $health): void
+    {
+        $this->health = $health;
+    }
+
+    /**
      * Reduce health to zero.
      */
     public function setHealthToZero(): void
@@ -164,5 +175,14 @@ class Unit
     public function isFall(): bool
     {
         return $this->health <= 0;
+    }
+
+    public function regenerate(): void
+    {
+        $this->health += self::REGENERATION_POINTS;
+
+        if ($this->health > $this->maxHealth) {
+            $this->health = $this->maxHealth;
+        }
     }
 }

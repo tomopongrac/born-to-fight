@@ -14,7 +14,7 @@ class Army
     private $name;
 
     /**
-     * @var array
+     * @var Unit[]
      */
     private $units = [];
 
@@ -116,5 +116,15 @@ class Army
     public function getUnitForFight(): Unit
     {
         return $this->units[array_rand($this->units)];
+    }
+
+    /**
+     * Regenerate each unit in army.
+     */
+    public function regenerateUnits(): void
+    {
+        foreach ($this->units as $unit) {
+            $unit->regenerate();
+        }
     }
 }

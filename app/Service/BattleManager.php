@@ -50,6 +50,8 @@ class BattleManager
     public function start(): BattleResult
     {
         while ($this->army1->canFight() && $this->army2->canFight()) {
+            $this->regenerateArmies();
+
             $this->turn++;
 
             /** @var Unit $attacker */
@@ -169,5 +171,16 @@ class BattleManager
     public function setTestingMode(): void
     {
         $this->testingMode = true;
+    }
+
+    /**
+     * Regenerate all units in both armies.
+     */
+    private function regenerateArmies(): void
+    {
+        if ($this->turn != 0) {
+            $this->army1->regenerateUnits();
+            $this->army2->regenerateUnits();
+        }
     }
 }

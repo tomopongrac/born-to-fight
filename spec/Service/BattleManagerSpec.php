@@ -57,4 +57,23 @@ class BattleManagerSpec extends ObjectBehavior
 
         $this->attackerAttack($unit1, $unit2);
     }
+
+    public function it_should_regenerate_armies_after_each_turn(Army $army1, Army $army2, Unit $unit1, Unit $unit2)
+    {
+        $army1->canFight()->willReturn(true, true, false);
+        $army2->canFight()->willReturn(true, true);
+        $army1->getUnitForFight()->willReturn($unit1);
+        $army2->getUnitForFight()->willReturn($unit2);
+        $unit1->isStartingToRun()->willReturn(false);
+        $unit2->isStartingToRun()->willReturn(false);
+        $unit1->isAttackSuccessful()->willReturn(false);
+        $unit2->isAttackSuccessful()->willReturn(false);
+        $unit1->isFall()->willReturn(false);
+        $unit2->isFall()->willReturn(false);
+
+        $army1->regenerateUnits()->shouldBeCalled();
+        $army2->regenerateUnits()->shouldBeCalled();
+
+        $this->start();
+    }
 }
