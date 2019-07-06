@@ -7,11 +7,20 @@ use App\Service\BattleManager;
 use App\Service\UnitGenerator;
 use App\Validation\ArmyValidator;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Validator;
 
 class BattleController extends Controller
 {
-    public function index(Request $request, UnitGenerator $unitGenerator, ArmyValidator $validator)
+    /**
+     * Showing battle results.
+     *
+     * @param  Request  $request
+     * @param  UnitGenerator  $unitGenerator
+     * @param  ArmyValidator  $validator
+     * @return View
+     */
+    public function index(Request $request, UnitGenerator $unitGenerator, ArmyValidator $validator): View
     {
         $validator->make($request);
 
