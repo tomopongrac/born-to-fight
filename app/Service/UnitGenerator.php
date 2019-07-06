@@ -22,10 +22,10 @@ class UnitGenerator
     }
 
     /**
-     * @param $numberOfUnits
+     * @param int $numberOfUnits
      * @return Unit[]
      */
-    public function generateUnits($numberOfUnits): array
+    public function generateUnits(int $numberOfUnits): array
     {
         $units = $this->unitsLoader->getUnits();
 
