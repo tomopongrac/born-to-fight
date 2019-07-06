@@ -7,6 +7,7 @@ return [
         'armour' => 3,
         'accuracy' => 20,
         'maxHealth' => 50,
+        'morale' => 70,
     ],
     [
         'type' => 'Archer',
@@ -14,6 +15,7 @@ return [
         'armour' => 1,
         'accuracy' => 50,
         'maxHealth' => 30,
+        'morale' => 60,
     ],
     [
         'type' => 'Knight',
@@ -21,5 +23,6 @@ return [
         'armour' => 5,
         'accuracy' => 10,
         'maxHealth' => 100,
+        'morale' => 90,
     ],
 ];

@@ -16,6 +16,7 @@ class UnitSpec extends ObjectBehavior
         'armour' => 2,
         'accuracy' => 50,
         'maxHealth' => 100,
+        'morale' => 51,
     ];
 
     public function it_is_initializable(): void
@@ -51,6 +52,11 @@ class UnitSpec extends ObjectBehavior
     public function it_has_max_health(): void
     {
         $this->getMaxHealth()->shouldReturn(100);
+    }
+
+    public function it_has_morale(): void
+    {
+        $this->getMorale()->shouldReturn(51);
     }
 
     public function it_can_reduce_health(): void

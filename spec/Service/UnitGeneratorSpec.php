@@ -30,6 +30,7 @@ class UnitGeneratorSpec extends ObjectBehavior
                 'armour' => 1,
                 'accuracy' => 50,
                 'maxHealth' => 30,
+                'morale' => 51,
             ],
         ]);
 

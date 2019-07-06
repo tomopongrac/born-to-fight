@@ -37,6 +37,11 @@ class Unit
     private $health;
 
     /**
+     * @var int
+     */
+    private $morale;
+
+    /**
      * Unit constructor.
      *
      * @param  string  $type
@@ -50,6 +55,7 @@ class Unit
         $this->accuracy = $stats['accuracy'];
         $this->maxHealth = $stats['maxHealth'];
         $this->health = $stats['maxHealth'];
+        $this->morale = $stats['morale'];
     }
 
     /**
@@ -100,6 +106,16 @@ class Unit
     public function getMaxHealth(): int
     {
         return $this->maxHealth;
+    }
+
+    /**
+     * Return value for morale
+     *
+     * @return int
+     */
+    public function getMorale(): int
+    {
+        return $this->morale;
     }
 
     /**
