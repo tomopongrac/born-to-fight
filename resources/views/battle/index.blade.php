@@ -9,9 +9,14 @@
 </head>
 <body>
 <h1>Born to Fight</h1>
-<h2>Battle result</h2>
-<p>{{ $battleResult->getWinningArmy()->getName() }} is win. There
-    is {{ $battleResult->getWinningArmy()->getUnitsCount() }} remaining units in army.</p>
-<p>Battle was take {{ $battleResult->getTurn() }} turns.</p>
+@foreach ($errors->all() as $message)
+    <li>{{ $message }}</li>
+@endforeach
+@isset($battleResult)
+    <h2>Battle result</h2>
+    <p>{{ $battleResult->getWinningArmy()->getName() }} is win. There
+        is {{ $battleResult->getWinningArmy()->getUnitsCount() }} remaining units in army.</p>
+    <p>Battle was take {{ $battleResult->getTurn() }} turns.</p>
+@endisset
 </body>
 </html>

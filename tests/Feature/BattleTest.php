@@ -13,4 +13,36 @@ class BattleTest extends TestCase
             ->assertStatus(200)
             ->assertSee('Battle result');
     }
+
+    /** @test */
+    public function it_requires_number_of_units_for_army1()
+    {
+        $this->get('/?army2=2')
+            ->assertSee('The army1 parameter is required.')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_requires_number_of_units_for_army2()
+    {
+        $this->get('/?army1=2')
+            ->assertSee('The army2 parameter is required.')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_requires_integer_for_number_of_units_for_army1()
+    {
+        $this->get('/?army1=www&army2=2')
+            ->assertSee('The army1 must be an integer.')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_requires_integer_for_number_of_units_for_army2()
+    {
+        $this->get('/?army1=1&army2=www')
+            ->assertSee('The army2 must be an integer.')
+            ->assertStatus(200);
+    }
 }
