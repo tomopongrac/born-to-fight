@@ -61,6 +61,7 @@ class BattleManager
             $this->attackerAttack($attacker, $defender);
 
             if ($defender->isFall()) {
+                $attacker->increaseExperience();
                 $this->deleteUnitFromArmy($defender);
                 continue;
             }
@@ -68,6 +69,7 @@ class BattleManager
             $this->defenderAttack($attacker, $defender);
 
             if ($attacker->isFall()) {
+                $defender->increaseExperience();
                 $this->deleteUnitFromArmy($attacker);
                 continue;
             }

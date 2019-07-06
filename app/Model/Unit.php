@@ -7,6 +7,9 @@ namespace App\Model;
 class Unit
 {
     private const REGENERATION_POINTS = 2;
+
+    private const POINTS_FOR_LEVEL_UP = 2;
+
     /**
      * @var string
      */
@@ -41,6 +44,11 @@ class Unit
      * @var int
      */
     private $morale;
+
+    /**
+     * @var int
+     */
+    private $experience = 0;
 
     /**
      * Unit constructor.
@@ -184,5 +192,18 @@ class Unit
         if ($this->health > $this->maxHealth) {
             $this->health = $this->maxHealth;
         }
+    }
+
+    /**
+     * Increasing experience and attributes of unit.
+     */
+    public function increaseExperience(): void
+    {
+        $this->experience++;
+        $this->strength += self::POINTS_FOR_LEVEL_UP;
+        $this->armour += self::POINTS_FOR_LEVEL_UP;
+        $this->accuracy += self::POINTS_FOR_LEVEL_UP;
+        $this->maxHealth += self::POINTS_FOR_LEVEL_UP;
+        $this->morale += self::POINTS_FOR_LEVEL_UP;
     }
 }

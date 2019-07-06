@@ -92,4 +92,15 @@ class UnitSpec extends ObjectBehavior
 
         $this->getHealth()->shouldReturn(100);
     }
+
+    public function it_should_increase_stats_after_experience_is_gained(): void
+    {
+        $this->increaseExperience();
+
+        $this->getStrength()->shouldReturn(12);
+        $this->getArmour()->shouldReturn(4);
+        $this->getAccuracy()->shouldReturn(52);
+        $this->getMaxHealth()->shouldReturn(102);
+        $this->getMorale()->shouldReturn(53);
+    }
 }
