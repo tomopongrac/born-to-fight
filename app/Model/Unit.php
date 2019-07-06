@@ -140,8 +140,6 @@ class Unit
 
     /**
      * Reduce health to zero.
-     *
-     * @param int $damage
      */
     public function setHealthToZero(): void
     {
