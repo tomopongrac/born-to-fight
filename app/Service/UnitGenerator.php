@@ -27,9 +27,15 @@ class UnitGenerator
      */
     public function generateUnits(int $numberOfUnits): array
     {
+        $general = $this->unitsLoader->getGeneral();
         $units = $this->unitsLoader->getUnits();
 
         $generatedUnits = [];
+
+        // First unit is general unit
+        $type = array_shift($general);
+        $generatedUnits[] = new Unit($type, $general);
+
         for ($i = 0; $i < $numberOfUnits; $i++) {
             $randomKey = array_rand($units);
             $unit = $units[$randomKey];

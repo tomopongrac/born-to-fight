@@ -68,6 +68,26 @@ class Unit
     }
 
     /**
+     * Return type.
+     *
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * Return the name of general unit.
+     *
+     * @return string
+     */
+    public function getGeneralType(): string
+    {
+        return "General";
+    }
+
+    /**
      * Return value strength
      *
      * @return int

@@ -34,6 +34,15 @@ class UnitGeneratorSpec extends ObjectBehavior
             ],
         ]);
 
+        $unitLoader->getGeneral()->willReturn([
+            'type' => 'General',
+            'strength' => 7,
+            'armour' => 1,
+            'accuracy' => 50,
+            'maxHealth' => 30,
+            'morale' => 51,
+        ]);
+
         $numberOfUnits = 2;
         $units = $this->generateUnits($numberOfUnits);
 

@@ -29,6 +29,11 @@ class UnitSpec extends ObjectBehavior
         $this->beConstructedWith($this->type, $this->stats);
     }
 
+    public function it_has_type(): void
+    {
+        $this->getType()->shouldReturn($this->type);
+    }
+
     public function it_has_strength(): void
     {
         $this->getStrength()->shouldReturn(10);

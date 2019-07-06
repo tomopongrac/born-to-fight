@@ -186,7 +186,7 @@ class BattleManager
 
     /**
      * Checking if unit is defeated.
-     * 
+     *
      * @param  Unit  $unit
      * @return bool
      */

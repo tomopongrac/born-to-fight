@@ -10,4 +10,9 @@ class UnitsLoader
     {
         return config('app.units');
     }
+
+    public function getGeneral()
+    {
+        return config('app.general');
+    }
 }
