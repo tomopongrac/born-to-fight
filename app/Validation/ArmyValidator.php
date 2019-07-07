@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Validation;
 
+use Illuminate\Validation\Factory;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -13,16 +14,17 @@ class ArmyValidator
 
     /**
      * ArmyValidator constructor.
-     * @param  Validator  $validator
+     *
+     * @param  Factory  $validator
      */
-    public function __construct(Validator $validator)
+    public function __construct(Factory $validator)
     {
         $this->validator = $validator;
     }
 
     public function make(Request $request)
     {
-        $this->validator = Validator::make($request->all(), [
+        $this->validator = $this->validator->make($request->all(), [
             'army1' => 'required|integer',
             'army2' => 'required|integer',
         ], $this->messages());
