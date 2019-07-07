@@ -45,4 +45,20 @@ class BattleTest extends TestCase
             ->assertSee('The army2 must be an integer.')
             ->assertStatus(200);
     }
+
+    /** @test */
+    public function it_requires__number_of_units_greater_than_zero_for_army1()
+    {
+        $this->get('/?army1=0&army2=2')
+            ->assertSee('The army1 must be at least 1.')
+            ->assertStatus(200);
+    }
+
+    /** @test */
+    public function it_requires__number_of_units_greater_than_zero_for_army2()
+    {
+        $this->get('/?army1=1&army2=-1')
+            ->assertSee('The army2 must be at least 1.')
+            ->assertStatus(200);
+    }
 }

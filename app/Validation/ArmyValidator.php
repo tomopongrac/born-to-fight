@@ -25,8 +25,8 @@ class ArmyValidator
     public function make(Request $request)
     {
         $this->validator = $this->validator->make($request->all(), [
-            'army1' => 'required|integer',
-            'army2' => 'required|integer',
+            'army1' => 'required|integer|min:1',
+            'army2' => 'required|integer|min:1',
         ], $this->messages());
     }
 
