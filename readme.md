@@ -26,10 +26,11 @@ Open the link and start the app
 http://127.0.0.1:8000/?army1=100&army2=100
 ```
 
-There is a test in phpunit and phpspec which you can run by command
+There is a test in phpunit (tests/Feature/BattleTest.php) and phpspec (spec/) which you can run by command
 ```
 composer run-tests
 ```
+
 For running squizlabs/PHP_CodeSniffer run command
 ```
 composer fix-cs
