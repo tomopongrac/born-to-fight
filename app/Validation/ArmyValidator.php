@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Validation;
 
+use Illuminate\Support\MessageBag;
 use Illuminate\Validation\Factory;
 use Validator;
 use Illuminate\Http\Request;
@@ -22,7 +23,12 @@ class ArmyValidator
         $this->validator = $validator;
     }
 
-    public function make(Request $request)
+    /**
+     * Perform validation.
+     *
+     * @param  Request  $request
+     */
+    public function make(Request $request): void
     {
         $this->validator = $this->validator->make($request->all(), [
             'army1' => 'required|integer|min:1',
@@ -30,22 +36,42 @@ class ArmyValidator
         ], $this->messages());
     }
 
-    public function fails()
+    /**
+     * Check if validation was failed.
+     *
+     * @return bool
+     */
+    public function fails(): bool
     {
         return $this->validator->fails();
     }
 
-    public function getValidatedFields()
+    /**
+     * Returns validated attributes with values.
+     *
+     * @return array
+     */
+    public function getValidatedFields(): array
     {
         return $this->validator->validated();
     }
 
-    public function errors()
+    /**
+     * Returns objects with errors messsages
+     *
+     * @return MessageBag
+     */
+    public function errors(): MessageBag
     {
         return $this->validator->errors();
     }
 
-    private function messages()
+    /**
+     * Custom error messages.
+     *
+     * @return array
+     */
+    private function messages(): array
     {
         return [
             'required' => 'The :attribute parameter is required.',
