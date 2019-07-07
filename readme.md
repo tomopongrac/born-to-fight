@@ -3,6 +3,29 @@ This is a little app which simulates battle between two armies. Each army have N
 
 App is made in Laravel 5.8
 
+Clone repository
+
+```
+git clone https://github.com/tomopongrac/born-to-fight.git
+```
+
+Open directory
+
+```
+cd born-to-fight
+```
+
+Start the server
+```
+php artisan serve
+```
+
+Open the link and start the app
+
+```
+http://127.0.0.1:8000/?army1=100&army2=100
+```
+
 There is a test in phpunit and phpspec which you can run by command
 ```
 composer run-tests
